@@ -4,6 +4,7 @@ session_start();
 if(!isset($_SESSION['username_admin'])){
     header("location: login.php");
 }
+print_r($_SESSION['admin_akses']);
 ?>
 
 <!doctype html>
@@ -17,29 +18,31 @@ if(!isset($_SESSION['username_admin'])){
   <body>
     <div class="container" style="margin-top: 80px">
             <div class="row">
-                <div class="col-md-4 offset-md-4">
+                <div class="col-md-8 offset-md-2">
                 <div class="card">
                  
                     <div class="card-header text-center">
                         DATA USER
                     </div>
                     <div class="card-body">
+                        <a href="logout.php" class="btn btn-danger mb-2 " style="float: right">LOGOUT</a>
                     <table class="table table-bordered">
                     <thead>
                         <tr>
                         <th scope="col">NAMA</th>
                         <th scope="col">EMAIL</th>
                         <th scope="col">NO.HP</th>
-                        <th scope="col">JENIS KELAMIN</th>
+                        <th scope="col">KELAMIN</th>
                         <th scope="col">PASSWORD</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                        <th scope="row">1</th>
-                        <td>Mark</td>
-                        <td>Otto</td>
-                        <td>@mdo</td>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
                         </tr>
                        
                     </tbody>

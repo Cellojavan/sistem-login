@@ -26,8 +26,23 @@ if(isset($_POST['submit'])){
         }
     }
     if(empty($eror)){
+        $result = "SELECT * FROM admin_akses WHERE login_id = '$login_id'";
+        $query = mysqli_query($koneksi,$result);
+        $row = mysqli_fetch_array($query);
+        $login_id = $row['login_id'];
+        while($row = mysqli_fetch_array($query)){
+            $akses[] = $row['akses_id'];
+        }
+        if(empty($akses)){
+            $eror = "<li>Kamu tidak punya akses ke halaman admin</li>";
+        }
+    }
+    if(empty($eror)){
         $_SESSION['username_admin'] = $username;
+        $_SESSION['admin_akses'] = $akses;
         header ("location: halaman_admin.php");
+    }if(!$result){
+
     }
 }
 ?>
