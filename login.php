@@ -1,3 +1,36 @@
+<?php
+session_start();
+if(isset($_SESSION['username_admin'])){
+    header("location: halaman_admin.php");
+}
+
+
+require 'koneksi.php';
+$username = "";
+$password = "";
+$eror ="";
+$erors = "";
+if(isset($_POST['submit'])){
+    $username = $_POST['username'];
+    $password = $_POST['password'];
+
+    if( $username == '' or $password == ''){
+        $eror = "<li>Silahkan masukan username dan password</li>";
+    }
+    if(empty($eror)){
+        $result = "SELECT * FROM login_admin WHERE username='$username'";
+        $query = mysqli_query($koneksi,$result);
+        $row = mysqli_fetch_array($query);
+        if( $row['password'] != md5($password )){
+            $eror = "<li>Password salah</li>";
+        }
+    }
+    if(empty($eror)){
+        $_SESSION['username_admin'] = $username;
+        header ("location: halaman_admin.php");
+    }
+}
+?>
 <!doctype html>
 <html lang="en">
   <head>
@@ -11,23 +44,30 @@
             <div class="row">
                 <div class="col-md-4 offset-md-4">
                 <div class="card">
+                 
                     <div class="card-header text-center">
                         LOGIN
                     </div>
                     <div class="card-body">
+                    <?php 
+                        if($eror){
+                        echo "<ul>$eror</ul>";
+                       }
+                       
+    
+                     ?>
                         <form action="" method="post">
-                        <form>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" class="form-control" id="username" placeholder="Enter Username">
+                                <input type="text" class="form-control" name="username" id="username" placeholder="Enter Username" autocomplete="off">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off">
                             </div>
                             <button type="submit" class="btn btn-primary mt-2" name="submit">Submit</button>
                         </form>
-                        </form>
+                       
 
                     </div>
                     </div>
