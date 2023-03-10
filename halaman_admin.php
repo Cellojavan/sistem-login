@@ -13,7 +13,7 @@ if(!isset($_SESSION['level'])){
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
+    <title>DATA USER</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
   </head>
   <body>
@@ -37,6 +37,8 @@ if(!isset($_SESSION['level'])){
                         <th scope="col">NO.HP</th>
                         <th scope="col">KELAMIN</th>
                         <th scope="col">PASSWORD</th>
+                        <th scope="col">AKSI</th>
+                        
                         </tr>
                     </thead>
                     <tbody>
@@ -54,6 +56,10 @@ if(!isset($_SESSION['level'])){
                         <th><?= $row['phone']?></th>
                         <th><?= $row['jeniskelamin']?></th>
                         <th><?= $row['passwordd']?></th>
+                        <td>
+                            <a href="edit_user.php?id=<?= $row['id_user']?>" class="btn btn-warning">EDIT</a>
+                        </td>
+                        
                         </tr>
 
                        <?php endwhile ?>

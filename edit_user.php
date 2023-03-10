@@ -1,17 +1,20 @@
 <?php 
 
-session_start();
-if(!isset($_SESSION['level'])){
-    header("location: login.php");
-}
-
 
 require 'koneksi.php';
 
+$id = $_GET['id'];
 
+$query = "SELECT * FROM user WHERE id_user = $id LIMIT 1";
 
+$result = mysqli_query($koneksi, $query);
+
+$row = mysqli_fetch_array($result);
+
+print_r($row);
 
 ?>
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -26,28 +29,29 @@ require 'koneksi.php';
             <div class="col-md-8 offset-md-2">
             <div class="card">
             <div class="card-header">
-                DATA USER
+                EDIT SISWA
             </div>
             <div class="card-body">
             <form action="simpan_user.php" method="post" >
                 <div class="form-group">
                     <label for="nama" class="form-label">Nama</label>
-                    <input type="text" class="form-control" name="nama" id="nama" placeholder="Nama" autocomplete="off">
+                    <input type="text" class="form-control" name="nama" value="<?= $row['nama']?>"id="nama" placeholder="Nama" autocomplete="off">
+                    <input type="hidden" name="id" value="<?= $row['id_user']?>">
                 </div>    
 
                 <div class="form-group">    
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" name="email" id="email" placeholder="Email" autocomplete="off">
+                    <input type="email" class="form-control" name="email" value="<?= $row['email']?>" id="email" placeholder="Email" autocomplete="off">
                 </div>  
 
                 <div class="form-group">
                     <label for="nohp" class="form-label">NoHp</label>
-                    <input type="text" class="form-control" name="nohp" id="nohp" placeholder="NoHp" autocomplete="off">
+                    <input type="text" class="form-control" name="nohp"  value="<?= $row['phone']?>" id="nohp" placeholder="NoHp" autocomplete="off">
                 </div>
 
                 <div class="form-group">
                     <label for="kelamin" class="form-label">Kelamin</label>
-                    <select class="form-select" name="kelamin" id="kelamin" autocomplete="off" >
+                    <select class="form-select" name="kelamin"  value="<?= $row['jeniskelamin']?>" id="kelamin" autocomplete="off" >
                     <option></option>
                     <option>laki-laki</option>
                     <option>perempuan</option>
@@ -56,12 +60,12 @@ require 'koneksi.php';
 
                 <div class="form-group">
                     <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password" id="password" placeholder="Password" autocomplete="off">
+                    <input type="password" class="form-control" name="password"  value="<?= $row['passwordd']?>" id="password" placeholder="Password" autocomplete="off">
                 </div>
 
                 <div class="form-group">
                     <label for="level" class="form-label">Level</label>
-                    <select class="form-select" name="level" id="level" autocomplete="off">
+                    <select class="form-select" name="level"  value="<?= $row['statuss']?>" id="level" autocomplete="off">
                     <option>admin</option>
                     <option>user</option>
                     </select>
