@@ -1,10 +1,9 @@
 <?php 
 require 'koneksi.php';
 session_start();
-if(!isset($_SESSION['username_admin'])){
+if(!isset($_SESSION['level'])){
     header("location: login.php");
 }
-print_r($_SESSION['admin_akses']);
 ?>
 
 <!doctype html>

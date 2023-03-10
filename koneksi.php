@@ -3,8 +3,9 @@
 $dbuser = "localhost";
 $username = "root";
 $pass = "";
-$dtbase = "login";
+$dtbase = "sistem_login";
 
 $koneksi = mysqli_connect($dbuser, $username, $pass, $dtbase);
+
 
 ?>

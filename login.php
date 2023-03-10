@@ -1,7 +1,7 @@
 <?php
 session_start();
-if(isset($_SESSION['username_admin'])){
-    header("location: halaman_admin.php");
+if(isset($_SESSION['level'])){
+    header("location: paralel.php");
 }
 
 
@@ -9,7 +9,6 @@ require 'koneksi.php';
 $username = "";
 $password = "";
 $eror ="";
-$erors = "";
 if(isset($_POST['submit'])){
     $username = $_POST['username'];
     $password = $_POST['password'];
@@ -18,33 +17,23 @@ if(isset($_POST['submit'])){
         $eror = "<li>Silahkan masukan username dan password</li>";
     }
     if(empty($eror)){
-        $result = "SELECT * FROM login_admin WHERE username='$username'";
+        $result = "SELECT * FROM user WHERE nama='$username' AND passwordd='$password'";
         $query = mysqli_query($koneksi,$result);
         $row = mysqli_fetch_array($query);
-        if( $row['password'] != md5($password )){
-            $eror = "<li>Password salah</li>";
-        }
-    }
-    if(empty($eror)){
-        $result = "SELECT * FROM admin_akses WHERE login_id = '$login_id'";
-        $query = mysqli_query($koneksi,$result);
-        $row = mysqli_fetch_array($query);
-        $login_id = $row['login_id'];
-        while($row = mysqli_fetch_array($query)){
-            $akses[] = $row['akses_id'];
-        }
-        if(empty($akses)){
-            $eror = "<li>Kamu tidak punya akses ke halaman admin</li>";
-        }
-    }
-    if(empty($eror)){
-        $_SESSION['username_admin'] = $username;
-        $_SESSION['admin_akses'] = $akses;
-        header ("location: halaman_admin.php");
-    }if(!$result){
+        $user = $row['nama'];
+        $pass = $row['passwordd'];
+        $level = $row['level'];
+        if( $user == $username && $pass == $password){
+            $_SESSION['level'] = $level;
+            header ("location: paralel.php");
+        }else{
+            $eror = "<li>Password dan Username salah</li>";
 
+        }
     }
-}
+    }
+    
+
 ?>
 <!doctype html>
 <html lang="en">
