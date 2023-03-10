@@ -20,10 +20,8 @@ if(isset($_POST['submit'])){
         $result = "SELECT * FROM user WHERE nama='$username' AND passwordd='$password'";
         $query = mysqli_query($koneksi,$result);
         $row = mysqli_fetch_array($query);
-        $user = $row['nama'];
-        $pass = $row['passwordd'];
         $level = $row['statuss'];
-        if( $user == $username && $pass == $password){
+        if( $username == $row['nama'] && $password == $row['passwordd']){
             $_SESSION['level'] = $level;
             header ("location: paralel.php");
         }else{

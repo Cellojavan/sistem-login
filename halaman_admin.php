@@ -4,6 +4,8 @@ session_start();
 if(!isset($_SESSION['level'])){
     header("location: login.php");
 }
+
+
 ?>
 
 <!doctype html>
@@ -20,13 +22,13 @@ if(!isset($_SESSION['level'])){
                 <div class="col-md-8 offset-md-2">
                 <div class="card">
                  
-                    <div class="card-header text-center">
+                    <div class="card-header text-center fw-bold">
                         DATA USER
                     </div>
                     <div class="card-body">
                         <a href="logout.php" class="btn btn-danger mb-2 " style="float: right">LOGOUT</a>
                         <a href="tambah_user.php" class="btn btn-success mb-2 ">TAMBAH USER</a>
-                    <table class="table table-bordered">
+                    <table class="table table-bordered text-center">
                     <thead>
                         <tr>
                         <th scope="col">ID</th>
