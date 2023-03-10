@@ -25,10 +25,12 @@ if(!isset($_SESSION['level'])){
                     </div>
                     <div class="card-body">
                         <a href="logout.php" class="btn btn-danger mb-2 " style="float: right">LOGOUT</a>
+                        <a href="tambah_user.php" class="btn btn-success mb-2 ">TAMBAH USER</a>
                     <table class="table table-bordered">
                     <thead>
                         <tr>
-                        <th scope="col">NAMA</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">USERNAMA</th>
                         <th scope="col">EMAIL</th>
                         <th scope="col">NO.HP</th>
                         <th scope="col">KELAMIN</th>
@@ -36,14 +38,23 @@ if(!isset($_SESSION['level'])){
                         </tr>
                     </thead>
                     <tbody>
+                        <?php 
+                        require 'koneksi.php';
+                        $no = 1;
+                        $query = mysqli_query($koneksi, "SELECT * FROM user ");
+                        while($row = mysqli_fetch_array($query)) :
+                        
+                        ?>
                         <tr>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
-                        <th></th>
+                        <th><?= $no++ ?></th>
+                        <th><?= $row['nama']?></th>
+                        <th><?= $row['email']?></th>
+                        <th><?= $row['phone']?></th>
+                        <th><?= $row['jeniskelamin']?></th>
+                        <th><?= $row['passwordd']?></th>
                         </tr>
-                       
+
+                       <?php endwhile ?>
                     </tbody>
                     </table>
                     

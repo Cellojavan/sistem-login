@@ -22,7 +22,7 @@ if(isset($_POST['submit'])){
         $row = mysqli_fetch_array($query);
         $user = $row['nama'];
         $pass = $row['passwordd'];
-        $level = $row['level'];
+        $level = $row['statuss'];
         if( $user == $username && $pass == $password){
             $_SESSION['level'] = $level;
             header ("location: paralel.php");
