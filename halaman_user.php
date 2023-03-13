@@ -3,6 +3,7 @@ require 'koneksi.php';
 session_start();
 if(!isset($_SESSION['level'])){
     header("location: login.php");
+    
 }
 
 function rupiah($angka){
@@ -27,6 +28,24 @@ function rupiah($angka){
                     <div class="card-header text-center fw-bold">
                         DATA BUKU
                     </div>
+                    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <?php if($_SESSION['level'] == 'admin') {?>                  
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="halaman_admin.php">USER PAGE</a>
+                            </li>
+                            <?php }?>
+                        
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="halaman_user.php">BOOK PAGE</a>
+                            </li>
+
+                           
+                        </div>
+                    </div>
+                    </nav>
                     <div class="card-body">
                         <a href="logout.php" class="btn btn-danger mb-2 " style="float: right">LOGOUT</a>
                         <a href="tambah_buku.php" class="btn btn-success mb-2 ">TAMBAH BUKU</a>
@@ -52,9 +71,7 @@ function rupiah($angka){
                         <th><?= $row['pengarang']?></th>
                         <th><?= $row['jumlah']?></th>
                         <th><?= rupiah($row['hargajual'])?></th>
-                        <th>
-                            <td><a href="edit_user.php?id=<?= $row['id_user']?>" class="btn btn-warning">EDIT</a></td>
-                        </th>
+                       
                         </tr>
 
                        <?php endwhile ?>

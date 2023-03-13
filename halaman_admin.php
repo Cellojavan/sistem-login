@@ -1,9 +1,10 @@
 <?php 
 require 'koneksi.php';
 session_start();
-if(!isset($_SESSION['level'])){
-    header("location: login.php");
-}
+    if('admin' !== ($_SESSION['level'])){
+        header("location: login.php");
+    }
+
 
 
 ?>
@@ -25,6 +26,21 @@ if(!isset($_SESSION['level'])){
                     <div class="card-header text-center fw-bold">
                         DATA USER
                     </div>
+                    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+                    <div class="container-fluid">
+                        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="halaman_admin.php">USER PAGE</a>
+                            </li>
+                            <li class="nav-item">
+                            <a class="nav-link active" aria-current="page" href="halaman_user.php">BOOK PAGE</a>
+                            </li>
+
+                           
+                        </div>
+                    </div>
+                    </nav>
                     <div class="card-body">
                         <a href="logout.php" class="btn btn-danger mb-2 " style="float: right">LOGOUT</a>
                         <a href="tambah_user.php" class="btn btn-success mb-2 ">TAMBAH USER</a>
@@ -50,15 +66,15 @@ if(!isset($_SESSION['level'])){
                         
                         ?>
                         <tr>
-                        <th><?= $no++ ?></th>
-                        <th><?= $row['nama']?></th>
-                        <th><?= $row['email']?></th>
-                        <th><?= $row['phone']?></th>
-                        <th><?= $row['jeniskelamin']?></th>
-                        <th><?= $row['passwordd']?></th>
+                        <td><?= $no++ ?></td>
+                        <td><?= $row['nama']?></td>
+                        <td><?= $row['email']?></td>
+                        <td><?= $row['phone']?></td>
+                        <td><?= $row['jeniskelamin']?></td>
+                        <td><?= $row['passwordd']?></td>
                         <td>
                             <a href="edit_user.php?id=<?= $row['id_user']?>" class="btn btn-warning">EDIT</a>
-                            <a href="hapus_user.php?id=<?= $row['id_user']?>" class="btn btn-danger">DELETE</a>
+                            <a href="delete_user.php?id=<?= $row['id_user']?>" class="btn btn-danger">DELETE</a>
                         </td>
                         
                         </tr>

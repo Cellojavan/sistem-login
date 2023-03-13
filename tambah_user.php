@@ -1,7 +1,7 @@
 <?php 
 
 session_start();
-if(!isset($_SESSION['level'])){
+if('admin' !== ($_SESSION['level'])){
     header("location: login.php");
 }
 
