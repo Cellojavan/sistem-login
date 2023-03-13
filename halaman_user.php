@@ -74,7 +74,7 @@ function rupiah($angka){
                         <td><?= rupiah($row['hargajual'])?></td>
                         <td>
                             <a href="edit_buku.php?id=<?= $row['id_buku']?>" class="btn btn-warning">EDIT</a>
-                            <a href="hapus_buku.php" class="btn btn-danger">HAPUS</a>
+                            <a href="delete_buku.php?id=<?= $row['id_buku']?>" class="btn btn-danger">HAPUS</a>
                         </td>
                        
                         </tr>
