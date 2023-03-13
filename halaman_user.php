@@ -56,6 +56,7 @@ function rupiah($angka){
                         <th scope="col">PENGARANG BUKU</th>
                         <th scope="col">JUMLAH BUKU</th>
                         <th scope="col">HARGA JUAL</th>
+                        <th scope="col">AKSI</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -67,10 +68,14 @@ function rupiah($angka){
                         
                         ?>
                         <tr>
-                        <th><?= $row['nama_buku']?></th>
-                        <th><?= $row['pengarang']?></th>
-                        <th><?= $row['jumlah']?></th>
-                        <th><?= rupiah($row['hargajual'])?></th>
+                        <td><?= $row['nama_buku']?></td>
+                        <td><?= $row['pengarang']?></td>
+                        <td><?= $row['jumlah']?></td>
+                        <td><?= rupiah($row['hargajual'])?></td>
+                        <td>
+                            <a href="edit_buku.php?id=<?= $row['id_buku']?>" class="btn btn-warning">EDIT</a>
+                            <a href="hapus_buku.php" class="btn btn-danger">HAPUS</a>
+                        </td>
                        
                         </tr>
 

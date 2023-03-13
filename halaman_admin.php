@@ -74,7 +74,7 @@ session_start();
                         <td><?= $row['passwordd']?></td>
                         <td>
                             <a href="edit_user.php?id=<?= $row['id_user']?>" class="btn btn-warning">EDIT</a>
-                            <a href="delete_user.php?id=<?= $row['id_user']?>" class="btn btn-danger">DELETE</a>
+                            <a href="delete_user.php?id=<?= $row['id_user']?>" class="btn btn-danger">HAPUS</a>
                         </td>
                         
                         </tr>
