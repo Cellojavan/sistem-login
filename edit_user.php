@@ -11,7 +11,6 @@ $result = mysqli_query($koneksi, $query);
 
 $row = mysqli_fetch_array($result);
 
-print_r($row);
 
 ?>
 
@@ -32,7 +31,7 @@ print_r($row);
                 EDIT SISWA
             </div>
             <div class="card-body">
-            <form action="simpan_user.php" method="post" >
+            <form action="update_user.php" method="post" >
                 <div class="form-group">
                     <label for="nama" class="form-label">Nama</label>
                     <input type="text" class="form-control" name="nama" value="<?= $row['nama']?>"id="nama" placeholder="Nama" autocomplete="off">
@@ -70,10 +69,11 @@ print_r($row);
                     <option>user</option>
                     </select>
                 </div>
+                <button type="submit" class="btn btn-success mt-2" name=submit>UPDATE</button>
 
 
 
-                <button type="submit" class="btn btn-success mt-2" name=submit>TAMBAH</button>
+                
             </form>    
             </div>
             </div>

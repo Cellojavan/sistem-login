@@ -58,6 +58,7 @@ if(!isset($_SESSION['level'])){
                         <th><?= $row['passwordd']?></th>
                         <td>
                             <a href="edit_user.php?id=<?= $row['id_user']?>" class="btn btn-warning">EDIT</a>
+                            <a href="hapus_user.php?id=<?= $row['id_user']?>" class="btn btn-danger">DELETE</a>
                         </td>
                         
                         </tr>
